@@ -32,7 +32,7 @@ public class GreetingController {
     public String sayHello() {
         String greeting = helloWorldService.getGreeting();
         System.out.println(greeting);
-        
+
         System.out.println(helloWorldServiceGerman.getGreeting());
         System.out.println(helloWorldServiceFrench.getGreeting());
         return greeting;
