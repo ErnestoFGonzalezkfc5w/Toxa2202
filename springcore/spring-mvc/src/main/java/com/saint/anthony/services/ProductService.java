@@ -4,10 +4,6 @@ import com.saint.anthony.domain.Product;
 
 import java.util.List;
 
-public interface ProductService {
-    List<Product> listAllProducts();
-    Product getProductById(Integer id);
+public interface ProductService extends CRUDService<Product> {
 
-    Product saveOrUpdateProduct(Product product);
-    void deleteProduct(Integer id);
 }
