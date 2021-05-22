@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @Profile("jpadao")
-public class ProductServiceJpaDaoImpl implements ProductService {
+public class ProductServiceJPADaoImpl implements ProductService {
     private EntityManagerFactory emf;
 
     @PersistenceUnit

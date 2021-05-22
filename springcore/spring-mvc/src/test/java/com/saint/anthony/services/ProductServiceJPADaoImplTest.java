@@ -15,7 +15,7 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = JpaIntegrationConfig.class)
 @ActiveProfiles("jpadao")
-public class ProductServiceJpaDaoImplTest {
+public class ProductServiceJPADaoImplTest {
     private ProductService productService;
 
     @Autowired
