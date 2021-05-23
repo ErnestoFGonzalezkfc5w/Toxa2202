@@ -15,7 +15,8 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = JpaIntegrationConfig.class)
 @ActiveProfiles("jpadao")
-public class ProductServiceJPADaoImplTest {
+public class ProductServiceJpaDaoImplTest {
+
     private ProductService productService;
 
     @Autowired
@@ -25,7 +26,10 @@ public class ProductServiceJPADaoImplTest {
 
     @Test
     public void testListMethod() throws Exception {
+
         List<Product> products = (List<Product>) productService.listAll();
+
         assert products.size() == 5;
+
     }
 }

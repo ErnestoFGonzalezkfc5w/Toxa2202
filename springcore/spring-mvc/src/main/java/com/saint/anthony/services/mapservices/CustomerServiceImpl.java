@@ -1,10 +1,11 @@
-package com.saint.anthony.services;
-
+package com.saint.anthony.services.mapservices;
 
 import com.saint.anthony.domain.Customer;
 import com.saint.anthony.domain.DomainObject;
+import com.saint.anthony.services.CustomerService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -30,4 +31,5 @@ public class CustomerServiceImpl extends AbstractMapService implements CustomerS
     public void delete(Integer id) {
         super.delete(id);
     }
+
 }

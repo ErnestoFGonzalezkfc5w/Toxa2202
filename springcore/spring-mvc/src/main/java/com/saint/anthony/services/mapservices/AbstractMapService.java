@@ -1,9 +1,10 @@
-package com.saint.anthony.services;
+package com.saint.anthony.services.mapservices;
 
 import com.saint.anthony.domain.DomainObject;
+
 import java.util.*;
 
-public abstract class AbstractMapService {
+public class AbstractMapService {
     protected Map<Integer, DomainObject> domainMap;
 
     public AbstractMapService() {
@@ -19,9 +20,9 @@ public abstract class AbstractMapService {
     }
 
     public DomainObject saveOrUpdate(DomainObject domainObject) {
-        if (domainObject != null) {
+        if (domainObject != null){
 
-            if (domainObject.getId() == null) {
+            if (domainObject.getId() == null){
                 domainObject.setId(getNextKey());
             }
             domainMap.put(domainObject.getId(), domainObject);
@@ -36,7 +37,7 @@ public abstract class AbstractMapService {
         domainMap.remove(id);
     }
 
-    private Integer getNextKey() {
+    private Integer getNextKey(){
         return Collections.max(domainMap.keySet()) + 1;
     }
 }

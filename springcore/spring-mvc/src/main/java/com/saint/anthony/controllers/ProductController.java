@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ProductController {
+
     private ProductService productService;
 
     @Autowired
@@ -19,37 +20,37 @@ public class ProductController {
     }
 
     @RequestMapping("/product/list")
-    public String listProducts(Model model) {
+    public String listProducts(Model model){
         model.addAttribute("products", productService.listAll());
         return "product/list";
     }
 
     @RequestMapping("/product/show/{id}")
-    public String getProduct(@PathVariable Integer id, Model model) {
+    public String getProduct(@PathVariable Integer id, Model model){
         model.addAttribute("product", productService.getById(id));
         return "product/show";
     }
 
-    @RequestMapping("/product/edit/{id}")
-    public String edit(@PathVariable Integer id, Model model) {
+    @RequestMapping("product/edit/{id}")
+    public String edit(@PathVariable Integer id, Model model){
         model.addAttribute("product", productService.getById(id));
         return "product/productform";
     }
 
     @RequestMapping("/product/new")
-    public String newProduct(Model model) {
+    public String newProduct(Model model){
         model.addAttribute("product", new Product());
         return "product/productform";
     }
 
     @RequestMapping(value = "/product", method = RequestMethod.POST)
-    public String saveOrUpdateProduct(Product product) {
+    public String saveOrUpdateProduct(Product product){
         Product savedProduct = productService.saveOrUpdate(product);
         return "redirect:/product/show/" + savedProduct.getId();
     }
 
     @RequestMapping("/product/delete/{id}")
-    public String delete(@PathVariable Integer id) {
+    public String delete(@PathVariable Integer id){
         productService.delete(id);
         return "redirect:/product/list";
     }

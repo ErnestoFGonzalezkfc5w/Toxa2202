@@ -5,13 +5,15 @@ import com.saint.anthony.domain.Product;
 import com.saint.anthony.services.CustomerService;
 import com.saint.anthony.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 
 @Component
-public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedEvent> {
+public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedEvent>{
+
     private ProductService productService;
     private CustomerService customerService;
 
@@ -29,9 +31,46 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         loadProducts();
         loadCustomers();
+
     }
 
-    public void loadProducts() {
+    public void loadCustomers() {
+        Customer customer1 = new Customer();
+        customer1.setFirstName("Micheal");
+        customer1.setLastName("Weston");
+        customer1.setAddressLine1("1 Main St");
+        customer1.setCity("Miami");
+        customer1.setState("Florida");
+        customer1.setZipCode("33101");
+        customer1.setEmail("micheal@burnnotice.com");
+        customer1.setPhoneNumber("305.333.0101");
+        customerService.saveOrUpdate(customer1);
+
+        Customer customer2 = new Customer();
+        customer2.setFirstName("Fiona");
+        customer2.setLastName("Glenanne");
+        customer2.setAddressLine1("1 Key Biscane Ave");
+        customer2.setCity("Miami");
+        customer2.setState("Florida");
+        customer2.setZipCode("33101");
+        customer2.setEmail("fiona@burnnotice.com");
+        customer2.setPhoneNumber("305.323.0233");
+        customerService.saveOrUpdate(customer2);
+
+        Customer customer3 = new Customer();
+        customer3.setFirstName("Sam");
+        customer3.setLastName("Axe");
+        customer3.setAddressLine1("1 Little Cuba Road");
+        customer3.setCity("Miami");
+        customer3.setState("Florida");
+        customer3.setZipCode("33101");
+        customer3.setEmail("sam@burnnotice.com");
+        customer3.setPhoneNumber("305.426.9832");
+        customerService.saveOrUpdate(customer3);
+    }
+
+    public void loadProducts(){
+
         Product product1 = new Product();
         product1.setDescription("Product 1");
         product1.setPrice(new BigDecimal("12.99"));
@@ -61,40 +100,6 @@ public class SpringJPABootstrap implements ApplicationListener<ContextRefreshedE
         product5.setPrice(new BigDecimal("25.99"));
         product5.setImageUrl("http://example.com/product5");
         productService.saveOrUpdate(product5);
-    }
 
-    protected void loadCustomers() {
-        Customer customer1 = new Customer();
-        customer1.setFirstName("Michael");
-        customer1.setLastName("Weston");
-        customer1.setAddressLine1("1 Main St");
-        customer1.setCity("Miami");
-        customer1.setState("Florida");
-        customer1.setZipCode("33101");
-        customer1.setEmail("michael@burnnotice.com");
-        customer1.setPhoneNumber("305.333.0101");
-        customerService.saveOrUpdate(customer1);
-
-        Customer customer2 = new Customer();
-        customer2.setFirstName("Fiona");
-        customer2.setLastName("Glenanne");
-        customer2.setAddressLine1("1 Key Biscane Ave");
-        customer2.setCity("Miami");
-        customer2.setState("Florida");
-        customer2.setZipCode("33101");
-        customer2.setEmail("fiona@burnnotice.com");
-        customer2.setPhoneNumber("305.323.0233");
-        customerService.saveOrUpdate(customer2);
-
-        Customer customer3 = new Customer();
-        customer3.setFirstName("Sam");
-        customer3.setLastName("Axe");
-        customer3.setAddressLine1("1 Little Cuba Road");
-        customer3.setCity("Miami");
-        customer3.setState("Florida");
-        customer3.setZipCode("33101");
-        customer3.setEmail("sam@burnnotice.com");
-        customer3.setPhoneNumber("305.426.9832");
-        customerService.saveOrUpdate(customer3);
     }
 }
