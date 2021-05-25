@@ -48,7 +48,7 @@ public class CustomerServiceJPADaoImpl extends AbstractJpaDaoService implements 
 
         Customer savedCustomer = em.merge(domainObject);
         em.getTransaction().commit();
-
+        em.close();
         return savedCustomer;
     }
 
@@ -59,5 +59,6 @@ public class CustomerServiceJPADaoImpl extends AbstractJpaDaoService implements 
         em.getTransaction().begin();
         em.remove(em.find(Customer.class, id));
         em.getTransaction().commit();
+        em.close();
     }
 }

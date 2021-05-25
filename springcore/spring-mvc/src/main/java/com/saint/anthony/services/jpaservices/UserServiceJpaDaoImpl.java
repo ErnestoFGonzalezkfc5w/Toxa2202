@@ -46,7 +46,7 @@ public class UserServiceJpaDaoImpl extends AbstractJpaDaoService implements User
 
         User saveduser = em.merge(domainObject);
         em.getTransaction().commit();
-
+        em.close();
         return saveduser;
     }
 
@@ -57,5 +57,6 @@ public class UserServiceJpaDaoImpl extends AbstractJpaDaoService implements User
         em.getTransaction().begin();
         em.remove(em.find(User.class, id));
         em.getTransaction().commit();
+        em.close();
     }
 }

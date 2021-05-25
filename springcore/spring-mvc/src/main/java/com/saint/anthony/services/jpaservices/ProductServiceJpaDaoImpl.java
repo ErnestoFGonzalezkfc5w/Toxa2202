@@ -33,7 +33,7 @@ public class ProductServiceJpaDaoImpl extends AbstractJpaDaoService implements P
         em.getTransaction().begin();
         Product savedProduct = em.merge(domainObject);
         em.getTransaction().commit();
-
+        em.close();
         return savedProduct;
     }
 
@@ -44,5 +44,6 @@ public class ProductServiceJpaDaoImpl extends AbstractJpaDaoService implements P
         em.getTransaction().begin();
         em.remove(em.find(Product.class, id));
         em.getTransaction().commit();
+        em.close();
     }
 }
